@@ -21,8 +21,8 @@ after_script:
   - ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT
 
 rvm:
-  - "2.5.8"
-  - "2.7.0"
+  - 2.5.7
+  - 2.7.0
   - ruby-head
 
 matrix:
@@ -32,6 +32,3 @@ matrix:
   include:
     - rvm: 2.6.5
       env: COV=true
-
-  rvm:
-    - "2.6.5"
