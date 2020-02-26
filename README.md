@@ -4,8 +4,8 @@ Easily handle JSON in RSpec and Cucumber
 
 [![Gem Version](https://img.shields.io/gem/v/rspec-oj.svg?style=flat)](http://rubygems.org/gems/rspec-oj)
 [![Build Status](https://img.shields.io/travis/mhenrixon/rspec-oj/master.svg?style=flat)](https://travis-ci.org/mhenrixon/rspec-oj)
-[![Code Climate](https://img.shields.io/codeclimate/github/mhenrixon/rspec-oj.svg?style=flat)](https://codeclimate.com/github/mhenrixon/rspec-oj)
-[![Dependency Status](https://img.shields.io/gemnasium/mhenrixon/rspec-oj.svg?style=flat)](https://gemnasium.com/mhenrixon/rspec-oj)
+[![Maintainability](https://api.codeclimate.com/v1/badges/e05efd6949d820a0db09/maintainability)](https://codeclimate.com/github/mhenrixon/rspec-oj/maintainability)
+[![Test Coverage](https://api.codeclimate.com/v1/badges/e05efd6949d820a0db09/test_coverage)](https://codeclimate.com/github/mhenrixon/rspec-oj/test_coverage)
 
 ## RSpec
 
