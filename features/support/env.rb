@@ -1,8 +1,10 @@
-$: << File.expand_path("../../../lib", __FILE__)
+# frozen_string_literal: true
 
-require "json_spec/cucumber"
+$LOAD_PATH << File.expand_path('../../lib', __dir__)
 
-JsonSpec.directory = File.expand_path("../../../spec/support/files", __FILE__)
+require 'rspec/oj/cucumber'
+
+RSpec::Oj.directory = File.expand_path('../../spec/support/files', __dir__)
 
 def last_json
   @last_json.to_s

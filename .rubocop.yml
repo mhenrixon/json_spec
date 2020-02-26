@@ -1,0 +1,24 @@
+inherit_gem:
+  rubocop-mhenrixon:
+    - config/default.yml
+
+AllCops:
+  TargetRubyVersion: 2.5'
+  Exclude:
+    - 'gemfiles/**/*'
+    - '**/*.json'
+
+RSpec/ExpectActual:
+  Enabled: false
+
+RSpec/MultipleExpectations:
+  Enabled: false
+
+Style/CaseEquality:
+  Enabled: false
+
+Style/Documentation:
+  Enabled: false
+
+Style/FormatStringToken:
+  Enabled: false

@@ -1,7 +1,9 @@
-Given "the JSON is:" do |json|
+# frozen_string_literal: true
+
+Given 'the JSON is:' do |json|
   @json = json
 end
 
-When "I get the JSON" do
+When 'I get the JSON' do
   @last_json = @json
 end

@@ -1,15 +1,15 @@
-# json_spec
+# rspec-oj
 
 Easily handle JSON in RSpec and Cucumber
 
-[![Gem Version](https://img.shields.io/gem/v/json_spec.svg?style=flat)](http://rubygems.org/gems/json_spec)
-[![Build Status](https://img.shields.io/travis/collectiveidea/json_spec/master.svg?style=flat)](https://travis-ci.org/collectiveidea/json_spec)
-[![Code Climate](https://img.shields.io/codeclimate/github/collectiveidea/json_spec.svg?style=flat)](https://codeclimate.com/github/collectiveidea/json_spec)
-[![Dependency Status](https://img.shields.io/gemnasium/collectiveidea/json_spec.svg?style=flat)](https://gemnasium.com/collectiveidea/json_spec)
+[![Gem Version](https://img.shields.io/gem/v/rspec-oj.svg?style=flat)](http://rubygems.org/gems/rspec-oj)
+[![Build Status](https://img.shields.io/travis/mhenrixon/rspec-oj/master.svg?style=flat)](https://travis-ci.org/mhenrixon/rspec-oj)
+[![Code Climate](https://img.shields.io/codeclimate/github/mhenrixon/rspec-oj.svg?style=flat)](https://codeclimate.com/github/mhenrixon/rspec-oj)
+[![Dependency Status](https://img.shields.io/gemnasium/mhenrixon/rspec-oj.svg?style=flat)](https://gemnasium.com/mhenrixon/rspec-oj)
 
 ## RSpec
 
-json_spec defines five new RSpec matchers:
+rspec-oj defines five new RSpec matchers:
 
 * `be_json_eql`
 * `include_json`
@@ -25,29 +25,29 @@ describe User do
 
   context "#to_json" do
     it "includes names" do
-      names = %({"first_name":"Steve","last_name":"Richert"})
-      user.to_json.should be_json_eql(names).excluding("friends")
+      names = { "first_name": "Steve", "last_name": "Richert" }
+      expect(user).to be_json_eql(names).excluding("friends")
     end
 
     it "includes the ID" do
-      user.to_json.should have_json_path("id")
-      user.to_json.should have_json_type(Integer).at_path("id")
+      expect(user).to have_json_path("id")
+      expect(user).to have_json_type(Integer).at_path("id")
     end
 
     it "includes friends" do
-      user.to_json.should have_json_size(0).at_path("friends")
+      expect(user).to have_json_size(0).at_path("friends")
 
       friend = User.create!(first_name: "Catie", last_name: "Richert")
       user.friends << friend
 
-      user.to_json.should have_json_size(1).at_path("friends")
-      user.to_json.should include_json(friend.to_json)
+      expect(user).to have_json_size(1).at_path("friends")
+      expect(user).to include_json(friend)
     end
   end
 end
 ```
 
-json_spec also provides some useful helpers for RSpec tests:
+rspec-oj also provides some useful helpers for RSpec tests:
 
 * `parse_json`
 * `normalize_json`
@@ -58,15 +58,15 @@ To start using them add an include them in your RSpec configuration:
 
 ```ruby
 RSpec.configure do |config|
-  config.include JsonSpec::Helpers
+  config.include RSpec::Oj::Helpers
 end
 ```
 
-You can find usage examples for the helpers in [`spec/json_spec/helpers_spec.rb`](https://github.com/collectiveidea/json_spec/blob/master/spec/json_spec/helpers_spec.rb)
+You can find usage examples for the helpers in [`spec/rspec/oj/helpers_spec.rb`](https://github.com/mhenrixon/rspec-oj/blob/master/spec/rspec/oj/helpers_spec.rb)
 
 ### Exclusions
 
-json_spec ignores certain hash keys by default when comparing JSON:
+rspec-oj ignores certain hash keys by default when comparing JSON:
 
 * `id`
 * `created_at`
@@ -77,18 +77,18 @@ so that the new ID and timestamps don't have to be known. These exclusions are g
 customizeable:
 
 ```ruby
-JsonSpec.configure do
+RSpec::Oj.configure do
   exclude_keys "created_at", "updated_at"
 end
 ```
 
-Now, the `id` key will be included in json_spec's comparisons. Keys can also be excluded/included
+Now, the `id` key will be included in rspec-oj's comparisons. Keys can also be excluded/included
 per matcher by chaining the `excluding` or `including` methods (as shown above) which will add or
 subtract from the globally excluded keys, respectively.
 
 ### Paths
 
-Each of json_spec's matchers deal with JSON "paths." These are simple strings of "/" separated
+Each of rspec-oj's matchers deal with JSON "paths." These are simple strings of "/" separated
 hash keys and array indexes. For instance, with the following JSON:
 
     {
@@ -106,13 +106,13 @@ We could access the first friend's first name with the path `"friends/0/first_na
 
 ## Cucumber
 
-json_spec provides Cucumber steps that utilize its RSpec matchers and that's where json_spec really
+rspec-oj provides Cucumber steps that utilize its RSpec matchers and that's where rspec-oj really
 shines. This is perfect for testing your app's JSON API.
 
 In order to use the Cucumber steps, in your `env.rb` you must:
 
 ```ruby
-require "json_spec/cucumber"
+require "rspec/oj/cucumber"
 ```
 
 You also need to define a `last_json` method. If you're using Capybara, it could be as simple as:
@@ -123,7 +123,7 @@ def last_json
 end
 ```
 
-Now, you can use the json_spec steps in your features:
+Now, you can use the rspec-oj steps in your features:
 
 ```cucumber
 Feature: User API
@@ -158,8 +158,8 @@ Feature: User API
       """
 ```
 
-The background steps above aren't provided by json_spec and the "visit" steps are provided by
-Capybara. The remaining steps, json_spec provides. They're versatile and can be used in plenty of
+The background steps above aren't provided by rspec-oj and the "visit" steps are provided by
+Capybara. The remaining steps, rspec-oj provides. They're versatile and can be used in plenty of
 different formats:
 
 ```cucumber
@@ -270,7 +270,7 @@ And the JSON should have "path/1"
 
 ### JSON Memory
 
-There's one more Cucumber step that json_spec provides which hasn't been used above. It's used to
+There's one more Cucumber step that rspec-oj provides which hasn't been used above. It's used to
 memorize JSON for reuse in later steps. You can "keep" all or a portion of the JSON by giving a
 name by which to remember it.
 
@@ -314,13 +314,13 @@ Then the JSON response at "0/first_name" should be %{FIRST_NAME}
 
 ### More
 
-Check out the [specs](https://github.com/collectiveidea/json_spec/blob/master/spec)
-and [features](https://github.com/collectiveidea/json_spec/blob/master/features) to see all the
-various ways you can use json_spec.
+Check out the [specs](https://github.com/mhenrixon/rspec-oj/blob/master/spec)
+and [features](https://github.com/mhenrixon/rspec-oj/blob/master/features) to see all the
+various ways you can use rspec-oj.
 
 ## Contributing
 
-If you come across any issues, please [tell us](https://github.com/collectiveidea/json_spec/issues).
+If you come across any issues, please [tell us](https://github.com/mhenrixon/rspec-oj/issues).
 Pull requests (with tests) are appreciated. No pull request is too small. Please help with:
 
 * Reporting bugs
@@ -330,12 +330,12 @@ Pull requests (with tests) are appreciated. No pull request is too small. Please
 * Cleaning whitespace
 * Refactoring code
 * Adding tests
-* Closing [issues](https://github.com/collectiveidea/json_spec/issues)
+* Closing [issues](https://github.com/mhenrixon/rspec-oj/issues)
 
 If you report a bug and don't include a fix, please include a failing test.
 
 ## Copyright
 
-Copyright © 2011 Steve Richert
+Copyright © 2020 Steve Richert
 
-See [LICENSE](https://github.com/collectiveidea/json_spec/blob/master/LICENSE) for details.
+See [LICENSE](https://github.com/mhenrixon/rspec-oj/blob/master/LICENSE) for details.

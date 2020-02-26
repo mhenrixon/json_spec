@@ -1,21 +1,12 @@
-after_success:
-  - bundle exec codeclimate-test-reporter
 branches:
   only:
     - master
-gemfile:
-  - gemfiles/rspec2.gemfile
-  - gemfiles/rspec3.gemfile
 language: ruby
 matrix:
   allow_failures:
     - rvm: ruby-head
-    - rvm: "2.0"
-    - rvm: "2.1"
 rvm:
-  - "2.0"
-  - "2.1"
-  - "2.2.7"
-  - "2.3.4"
-  - "2.4.1"
+  - "2.5.8"
+  - "2.6.5"
+  - "2.7.0"
   - ruby-head

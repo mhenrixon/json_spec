@@ -2,3 +2,5 @@
 Gemfile.lock
 gemfiles/*.lock
 pkg
+/spec/.rspec-status
+/coverage/
