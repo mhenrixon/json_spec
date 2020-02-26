@@ -1,12 +1,37 @@
-branches:
-  only:
-    - master
+env:
+  matrix:
+    - COV=false
+  global:
+    - CC_TEST_REPORTER_ID=902f8b80d43faee757f09e097eb4b4d3f2ea1e5157f70c3395aa98ee11ba2a8a
+    - GIT_COMMITTED_AT=$(if [ "$TRAVIS_PULL_REQUEST" == "false" ]; then git log -1 --pretty=format:%ct; else git log -1 --skip 1 --pretty=format:%ct; fi)
 language: ruby
+
+cache:
+  bundler: true
+
+before_script:
+  - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
+  - chmod +x ./cc-test-reporter
+  - ./cc-test-reporter before-build
+
+script:
+  - bundle exec rake test
+
+after_script:
+  - ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT
+
+rvm:
+  - "2.5.8"
+  - "2.7.0"
+  - ruby-head
+
 matrix:
   allow_failures:
     - rvm: ruby-head
-rvm:
-  - "2.5.8"
-  - "2.6.5"
-  - "2.7.0"
-  - ruby-head
+  fast_finish: true
+  include:
+    - rvm: 2.6.5
+      env: COV=true
+
+  rvm:
+    - "2.6.5"
