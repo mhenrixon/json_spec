@@ -1,8 +1,12 @@
 # frozen_string_literal: true
 
+lib = File.expand_path('lib', __dir__)
+$LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
+require 'rspec/oj/version'
+
 Gem::Specification.new do |spec|
-  spec.name    = 'rspec-oj'
-  spec.version = '1.0.0'
+  spec.name        = 'rspec-oj'
+  spec.version     = RSpec::Oj::VERSION
   spec.authors     = ['Mikael Henriksson']
   spec.email       = ['mikael@mhenrixon.com']
   spec.summary     = 'Easily handle JSON in RSpec and Cucumber'
