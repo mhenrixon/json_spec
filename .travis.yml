@@ -18,10 +18,15 @@ before_script:
   - ./cc-test-reporter before-build
 
 script:
-  - bundle exec rake test
+  - if [[ "${COV}" = "true" ]]; then bundle exec reek .; fi;
+  - if [[ "${COV}" = "true" ]]; then bundle exec rubocop -P .; fi;
+  - bundle exec rspec spec
 
 after_script:
-  - ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT
+  - >
+    if [[ "${COV}" = "true" ]]; then
+    ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT
+    fi;
 
 rvm:
   - 2.5.7
@@ -35,3 +40,8 @@ matrix:
   include:
     - rvm: 2.6.5
       env: COV=true
+
+notifications:
+  email:
+    recipients:
+      - mikael@mhenrixon.com

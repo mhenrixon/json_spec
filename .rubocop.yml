@@ -8,6 +8,10 @@ AllCops:
     - 'gemfiles/**/*'
     - '**/*.json'
 
+Naming/FileName:
+  Exclude:
+    - lib/rspec-oj.rb
+
 RSpec/ExpectActual:
   Enabled: false
 

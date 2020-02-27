@@ -22,7 +22,7 @@ Feature: Equivalence
         "integer": 10,
         "negative": -10,
         "null": null,
-        "string": "json_spec",
+        "string": "rspec-oj",
         "true": true,
         "updated_at": "2011-07-08 02:28:50"
       }
@@ -52,7 +52,7 @@ Feature: Equivalence
         "integer": 10,
         "negative": -10,
         "null": null,
-        "string": "json_spec",
+        "string": "rspec-oj",
         "true": true,
         "updated_at": "2011-07-08 02:28:50"
       }
@@ -65,7 +65,7 @@ Feature: Equivalence
       {
         "updated_at": "2011-07-08 02:28:50",
         "true": true,
-        "string": "json_spec",
+        "string": "rspec-oj",
         "null": null,
         "negative": -10,
         "integer": 10,
@@ -110,18 +110,18 @@ Feature: Equivalence
         "integer": 10,
         "negative": -10,
         "null": null,
-        "string": "json_spec",
+        "string": "rspec-oj",
         "true": true
       }
       """
 
   Scenario: String
     When I get the JSON
-    Then the JSON at "string" should be "json_spec"
-    And the JSON at "string" should be:
+    Then the JSON at "string" should be "rspec-oj"
+     And the JSON at "string" should be:
       """
-      "json_spec"
-      """
+      "rspec-oj"
+       """
 
   Scenario: Integer
     When I get the JSON
@@ -249,7 +249,7 @@ Feature: Equivalence
       | integer     | 10                    |
       | negative    | -10                   |
       | null        | null                  |
-      | string      | "json_spec"           |
+      | string      | "rspec-oj"            |
       | true        | true                  |
       | updated_at  | "2011-07-08 02:28:50" |
     And the JSON at "array" should have the following:
@@ -276,7 +276,7 @@ Feature: Equivalence
       | integer     | 10                    |
       | negative    | -10                   |
       | null        | null                  |
-      | string      | "json_spec"           |
+      | string      | "rspec-oj"            |
       | true        | true                  |
       | updated_at  | "2011-07-08 02:28:50" |
     And the JSON at "array" should have the following:

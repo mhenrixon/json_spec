@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 require 'simplecov'
-require 'rspec/oj'
+require 'rspec-oj'
 require 'pry'
 
 def files_path

@@ -35,7 +35,7 @@ module RSpec
       end
 
       def load_json(relative_path)
-        missing_json_directory! if RSpec::Oj.directory.nil?
+        missing_json_directory! unless RSpec::Oj.directory
         path = File.join(RSpec::Oj.directory, relative_path)
         missing_json_file!(path) unless File.exist?(path)
         File.read(path)
