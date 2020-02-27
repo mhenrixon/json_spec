@@ -20,7 +20,7 @@ RSpec.describe RSpec::Oj::Matchers::BeJsonEql do
   end
 
   it 'matches valid JSON values, yet invalid JSON documents' do
-    expect('json_spec').to be_json_eql('json_spec')
+    expect('rspec-oj').to be_json_eql('rspec-oj')
   end
 
   it 'matches at a path' do

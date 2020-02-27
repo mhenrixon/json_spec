@@ -11,11 +11,11 @@ RSpec.describe RSpec::Oj::Helpers do
     end
 
     it 'parses JSON values' do
-      expect(parse_json(%("json_spec"))).to eq 'json_spec'
+      expect(parse_json(%("rspec-oj"))).to eq 'rspec-oj'
     end
 
     # it 'raises a parser error for invalid JSON' do
-    #   expect { parse_json('json_spec') }.to raise_error(MultiJson::DecodeError)
+    #   expect { parse_json('rspec-oj') }.to raise_error(MultiJson::DecodeError)
     # end
 
     it 'parses at a path if given' do
@@ -50,7 +50,7 @@ RSpec.describe RSpec::Oj::Helpers do
     end
 
     it 'accepts a JSON value' do
-      expect(normalize_json(%("json_spec"))).to eq %("json_spec")
+      expect(normalize_json(%("rspec-oj"))).to eq %("rspec-oj")
     end
 
     it 'normalizes JSON values' do

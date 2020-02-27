@@ -8,7 +8,7 @@ Feature: Types
         "float": 10.0,
         "hash": {},
         "integer": 10,
-        "string": "json_spec",
+        "string": "rspec-oj",
         "true": true
       }
       """

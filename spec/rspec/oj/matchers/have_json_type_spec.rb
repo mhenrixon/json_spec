@@ -18,11 +18,11 @@ RSpec.describe RSpec::Oj::Matchers::HaveJsonType do
   end
 
   it 'matches strings' do
-    expect(%(["json_spec"])).to have_json_type(String).at_path('0')
+    expect(%(["rspec-oj"])).to have_json_type(String).at_path('0')
   end
 
   it 'matches a valid JSON value, yet invalid JSON document' do
-    expect(%("json_spec")).to have_json_type(String)
+    expect(%("rspec-oj")).to have_json_type(String)
   end
 
   it 'matches empty strings' do

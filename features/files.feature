@@ -22,7 +22,7 @@ Feature: Files
         "integer": 10,
         "negative": -10,
         "null": null,
-        "string": "json_spec",
+        "string": "rspec-oj",
         "true": true,
         "updated_at": "2011-07-08 02:28:50"
       }
@@ -34,7 +34,7 @@ Feature: Files
     Given the JSON is:
       """
       {
-        "string": "json_spec",
+        "string": "rspec-oj",
         "true": true,
         "updated_at": "2011-07-08 02:28:50"
       }

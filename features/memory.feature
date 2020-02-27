@@ -12,7 +12,7 @@ Feature: Memory
         },
         "integer": 10,
         "null": null,
-        "string": "json_spec",
+        "string": "rspec-oj",
         "true": true
       }
       """
@@ -61,7 +61,7 @@ Feature: Memory
         },
         "integer": %{INTEGER},
         "null": null,
-        "string": "json_spec",
+        "string": "rspec-oj",
         "true": true
       }
       """
@@ -81,7 +81,7 @@ Feature: Memory
         },
         "integer": 10,
         "null": null,
-        "string": "json_spec",
+        "string": "rspec-oj",
         "true": true
       }
       """
@@ -99,7 +99,7 @@ Feature: Memory
         },
         "integer": 10,
         "null": null,
-        "string": "json_spec",
+        "string": "rspec-oj",
         "true": true
       }
       """
@@ -118,7 +118,7 @@ Feature: Memory
         "hash": %{HASH},
         "integer": 10,
         "null": null,
-        "string": "json_spec",
+        "string": "rspec-oj",
         "true": true
       }
       """
@@ -138,7 +138,7 @@ Feature: Memory
         },
         "integer": 10,
         "null": null,
-        "string": "json_spec",
+        "string": "rspec-oj",
         "true": %{TRUE}
       }
       """
@@ -158,7 +158,7 @@ Feature: Memory
         },
         "integer": 10,
         "null": null,
-        "string": "json_spec",
+        "string": "rspec-oj",
         "true": true
       }
       """
@@ -178,7 +178,7 @@ Feature: Memory
         },
         "integer": 10,
         "null": %{NULL},
-        "string": "json_spec",
+        "string": "rspec-oj",
         "true": true
       }
       """

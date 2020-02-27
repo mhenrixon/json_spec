@@ -22,7 +22,7 @@ Feature: Inclusion
         "integer": 10,
         "negative": -10,
         "null": null,
-        "string": "json_spec",
+        "string": "rspec-oj",
         "true": true,
         "updated_at": "2011-07-08 02:28:50",
         "nested": {
@@ -34,10 +34,10 @@ Feature: Inclusion
 
   Scenario: String
     When I get the JSON
-    Then the JSON should include "json_spec"
+    Then the JSON should include "rspec-oj"
     And the JSON should include:
       """
-      "json_spec"
+      "rspec-oj"
       """
 
   Scenario: Integer
